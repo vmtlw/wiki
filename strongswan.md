@@ -1,3 +1,4 @@
+```
 cat /etc/ipsec.conf 
 config setup
     charondebug="ike 2, knl 2, cfg 2, net 2"
@@ -57,3 +58,4 @@ tree -d /etc/ipsec.d/
   511  iptables -A FORWARD -s 10.10.10.0/24 -o br0 -j ACCEPT
   512  iptables -A FORWARD -d 10.10.10.0/24 -i br0 -m state --state ESTABLISHED,RELATED -j ACCEPT
   513  iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -o br0 -j MASQUERADE
+```
