@@ -1,4 +1,7 @@
+
+
 ```
+apt install strongswan strongswan-pki strongswan-libcharon strongswan-charon libstrongswan-extra-plugins libcharon-extauth-plugins 
 cat /etc/ipsec.conf 
 config setup
     charondebug="ike 2, knl 2, cfg 2, net 2"
