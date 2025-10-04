@@ -35,3 +35,18 @@ if ! mountpoint -q /mnt; then
 	rm /dev/shm/$file
 	mount -t btrfs -o noatime,space_cache=v2,compress=zstd:1 UUID=$uuid $mnt_path
 fi
+
+cat /etc/systemd/system/luks-decryptor.service 
+[Unit]
+Description=Run my script when network is online
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/luks-decryptor.sh
+
+[Install]
+WantedBy=multi-user.target
+
+
