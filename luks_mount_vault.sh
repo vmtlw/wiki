@@ -36,6 +36,10 @@ if ! mountpoint -q /mnt; then
 	mount -t btrfs -o noatime,space_cache=v2,compress=zstd:1 UUID=$uuid $mnt_path
 fi
 
+
+exit 0
+
+################
 cat /etc/systemd/system/luks-decryptor.service 
 [Unit]
 Description=Run my script when network is online
@@ -48,5 +52,10 @@ ExecStart=/usr/local/bin/luks-decryptor.sh
 
 [Install]
 WantedBy=multi-user.target
+##################
+
+cryptsetup --verbose close crypto_data
+cryptsetup --verbose open --key-file /root/keyfile /dev/sda1 crypto_data
+cryptsetup luksDump /dev/sda1
 
 
